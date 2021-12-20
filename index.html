@@ -47,18 +47,18 @@
                       <span class="input-group-text" id="inputGroup-sizing-lg"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-door-open-fill" viewBox="0 0 16 16">
                         <path d="M1.5 15a.5.5 0 0 0 0 1h13a.5.5 0 0 0 0-1H13V2.5A1.5 1.5 0 0 0 11.5 1H11V.5a.5.5 0 0 0-.57-.495l-7 1A.5.5 0 0 0 3 1.5V15H1.5zM11 2h.5a.5.5 0 0 1 .5.5V15h-1V2zm-2.5 8c-.276 0-.5-.448-.5-1s.224-1 .5-1 .5.448.5 1-.224 1-.5 1z"/>
                       </svg></span>
-                      <input type="email" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" id="usuario">
+                      <input type="text" id="usuario" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
                     </div>
                     <div class="input-group input-group-lg campoLogin">
                       <span class="input-group-text" id="inputGroup-sizing-lg"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-key" viewBox="0 0 16 16">
                         <path d="M0 8a4 4 0 0 1 7.465-2H14a.5.5 0 0 1 .354.146l1.5 1.5a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0L13 9.207l-.646.647a.5.5 0 0 1-.708 0L11 9.207l-.646.647a.5.5 0 0 1-.708 0L9 9.207l-.646.647A.5.5 0 0 1 8 10h-.535A4 4 0 0 1 0 8zm4-3a3 3 0 1 0 2.712 4.285A.5.5 0 0 1 7.163 9h.63l.853-.854a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.793-.793-1-1h-6.63a.5.5 0 0 1-.451-.285A3 3 0 0 0 4 5z"/>
                         <path d="M4 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
                       </svg></span>
-                      <input type="password" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" id="senha">
+                      <input type="password" id="senha" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
                     </div>
                     <div class="d-grid gap-2 ms-4">
-                      <button class="btn btn-outline-secondary" type="button">Entre no App</button>
-                      <button class="btn btn-outline-secondary" type="button">Novo Usuário</button>
+                      <button id="btnEntrar" class="btn btn-outline-secondary" type="button">Entre no App</button>
+                      <button id="btnNovoUser" class="btn btn-outline-secondary" type="button">Novo Usuário</button>
                     </div>
                   </div>
                 </div>
@@ -117,12 +117,15 @@
       </div>
     </nav>
     <main>
+
+      <!-- Banner -->
       <div class="col-md-10 p-3 mt-5 mx-auto" style="margin-left: 10%; margin-top: 10%;">
         <div class="card mb-3">
           <img src="./img/BannerGoodPay.png" class="card-img-top" alt="Banner Principal">
           <div class="card-body">
             <h5 class="card-title">Vem para o simples: Goodpay</h5>
-            <p class="card-text">Vamos descomplicar suas finanças, o aplicativo GoodPay tem a proposta de organizar suas finanças com uso
+            <p class="card-text">
+              Vamos descomplicar suas finanças, o aplicativo GoodPay tem a proposta de organizar suas finanças com uso
               de tecnologia Javascript. Ele irá montar e organizar seus gastos usando uma interface Bootstrap fluida e
               bem desenvolvida para facilitar seu caixa pessoal.
               A aplicação tem uso simples e servirá para organiozar em um vetor de obejtos suas entradas e saídas baseadas
@@ -130,9 +133,11 @@
             <p class="card-text"><small class="text-muted">17 de dezembro 2021</small></p>
           </div>
         </div>
+
+        <!-- Cards -->
         <div class="card-group">
           <div class="card">
-            <img id="cardImagem1" src="/img/1.png" class="card-img-top" alt="...">
+            <img id="cardImagem1" src="img/1.png" class="card-img-top" alt="...">
             <div class="card-body">
               <h5 id="cardTitulo1" class="card-title">Planejamento Sempre</h5>
               <p id="cardTexto1" class="card-text">Aqui você poderá designar cada parte dos seus rendimentos e planejar para que seu dinheiro
@@ -165,9 +170,28 @@
             </div>
           </div>
         </div>
-      </div>
+      </div>  
     </main>
+
+     <!-- Modal Login -->
+     <div class="modal fade" tabindex="-1" id="myModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 id="modalTitulo" class="modal-title"></h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div id="modalCorpo" class="modal-body">
+            <p></p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
+
   <footer>
     
     <!-- Script -->
