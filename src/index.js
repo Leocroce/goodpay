@@ -8,13 +8,13 @@ const entrarUsuario = document.getElementById("btnEntrar");
 entrarUsuario.addEventListener("click", (e) => {
     let nome = document.getElementById("usuario").value;
     let senha = document.getElementById("senha").value;
+    let alertModal = controlerUserLogin.loginInfo(nome, senha);
+    
+    document.getElementById("titleModal").innerHTML = alertModal.title;
+    document.getElementById("bodyModal").innerHTML = alertModal.bodyModal;
+    document.getElementById("btnModalClose").innerHTML = alertModal.b1;
+    document.getElementById("btnModalSave").innerHTML = alertModal.b2;
 
-    if(!nome || nome === null || nome === "" || !senha || senha === null || senha === "") {
-        document.getElementById("modalCorpo").innerHTML = `Campos Vazios, não há como executar o login.`
-        document.getElementById("modalTitulo").innerHTML = `Campos Vazios` 
-        myModal.show();
-    } else {
-        controlerUserLogin.loginInfo(nome, senha);
-    }
+    myModal.show();
 });
 
