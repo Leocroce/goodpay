@@ -1,4 +1,5 @@
 import userLogin from "./moduloDados.js";
+import comunicacaoModal from "./moduloComunicacaoDados.js";
 
 class ControlerUserLogin {
     constructor(status) {
@@ -10,26 +11,22 @@ class ControlerUserLogin {
     
     loginInfo(user, senha) {
         var infoCheck = userLogin.find((userLogin) => userLogin.username === user);
-        var myModal = new bootstrap.Modal(document.getElementById('myModal'));
-        if(!infoCheck) {
-            document.getElementById("modalCorpo").innerHTML = `Usuário`
-            document.getElementById("modalTitulo").innerHTML = `Usuário não existe.`     
-            myModal.show();
+        
+        if(user === null || senha === null || user === "" || senha === "") {
+            return (comunicacaoModal.find((comunicacaoModal) => comunicacaoModal.idModal = "camposVazios1"));
         } else {
-            if(infoCheck.senha === senha) {
-                this.checkLogin();
-                document.getElementById("modalCorpo").innerHTML = `Usuário logado com sucesso.`
-                document.getElementById("modalTitulo").innerHTML = `${user}`         
-                myModal.show();
+            if(!infoCheck) {
+                return (comunicacaoModal.find((comunicacaoModal) => comunicacaoModal.idModal === "usuarioNaoExiste1"));  
             } else {
-            document.getElementById("modalCorpo").innerHTML = `Senha inválida.`
-            document.getElementById("modalTitulo").innerHTML = `${user}`     
-            myModal.show();
+                if(infoCheck.senha === senha) {
+                    this.checkLogin();
+                    return (comunicacaoModal.find((comunicacaoModal) => comunicacaoModal.idModal === "loginExecutado1"));
+                } else {
+                    return (comunicacaoModal.find((comunicacaoModal) => comunicacaoModal.idModal === "falhaLogin1"));
+                }    
             }
         }
-    }
-
-    
+    }  
 }
     const controlerUserLogin = new ControlerUserLogin();
 
