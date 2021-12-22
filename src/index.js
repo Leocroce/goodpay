@@ -1,9 +1,9 @@
-import controlerUserLogin from "./moduloInterface.js";
-
+import controlerUserLogin from "./moduloControlerLogin.js";
+import controleRotasApp from "./moduloControleRotas.js";
 // Elementos de Avisos para uso do Bootstrap: Modal, Toast, Alert
 var myModal = new bootstrap.Modal(document.getElementById('myModal'))
 
-// Trazendo os botões da DOM em HTML
+// Ordem para executar o login
 const entrarUsuario = document.getElementById("btnEntrar");
 entrarUsuario.addEventListener("click", (e) => {
     let nome = document.getElementById("usuario").value;
@@ -16,5 +16,14 @@ entrarUsuario.addEventListener("click", (e) => {
     document.getElementById("btnModalSave").innerHTML = alertModal.b2;
 
     myModal.show();
+    setTimeout(carregarPagina, 3500);
+    function carregarPagina() {
+        window.location.href = controleRotasApp.validaRota(localStorage.status, alertModal.idModal);
+    }
 });
 
+/* Ordem para criar um novo usuario */
+const novoUsuario = document.getElementById("btnNovoUser");
+novoUsuario.addEventListener("click", (e) => {
+    window.location.href = controleRotasApp.validaRota("false", "usuarioNaoExiste1");
+});
